@@ -1,0 +1,15 @@
+server:
+  port: 9090
+  servlet:
+    context-path:
+spring:
+  application:
+    name: demo
+
+# log4j2
+logging:
+  config: classpath:log4j2.xml
+
+user:
+  username: www
+  password: www
