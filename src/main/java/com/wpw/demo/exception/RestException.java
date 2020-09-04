@@ -35,6 +35,12 @@ public class RestException extends RuntimeException{
         this.msg = msg;
     }
 
+    public RestException(String msg) {
+        super(msg);
+        this.code = 500;
+        this.msg = msg;
+    }
+
 
     public RestException(String msg, int code, Throwable e) {
         super(msg, e);
