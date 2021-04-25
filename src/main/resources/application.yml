@@ -2,9 +2,12 @@ server:
   port: 9090
   servlet:
     context-path:
+    encoding:
+            force-response: true
 spring:
   application:
     name: demo
+
 
 # log4j2
 logging:

@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Listener
  **/
-@Configuration
+//@Configuration
 @Slf4j
 public class ApplicationStartQuartzJobListener implements ApplicationListener<ContextRefreshedEvent> {
 

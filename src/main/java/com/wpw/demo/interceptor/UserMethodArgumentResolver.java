@@ -22,37 +22,37 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
  * @author limengyang
  * create  2019-01-21
  **/
-@Component
-public class UserMethodArgumentResolver implements HandlerMethodArgumentResolver {
-
-    @Value("${user.username}")
-    private String username;
-
-    @Value("${user.password}")
-    private String password;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserMethodArgumentResolver.class);
-
-    @Override
-    public boolean supportsParameter(MethodParameter methodParameter) {
-        return (methodParameter.getParameterType().isAssignableFrom(UserInfo.class) && methodParameter.hasParameterAnnotation(CurrentUser.class));
-    }
-
-    @Override
-    public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-        //处理登录用户
-        Object userId = nativeWebRequest.getAttribute(UserConsts.PLATFORM_USERID, RequestAttributes.SCOPE_REQUEST);
-        if (userId != null) {
-            if (!username.equals(userId)) {
-                LOGGER.error("platformUserId={}", userId);
-                throw new RestException(404, "登录用户不存在");
-            }
-            UserInfo userInfo = new UserInfo();
-            userInfo.setUserName( String.valueOf(userId));
-            userInfo.setPassword( String.valueOf(password));
-            return userInfo;
-        }
-        throw new MissingServletRequestPartException("用户ID属性不存在 检查是否在类或方法上使用ExcludeAccessToken");
-    }
-
-}
+//@Component
+//public class UserMethodArgumentResolver implements HandlerMethodArgumentResolver {
+//
+//    @Value("${user.username}")
+//    private String username;
+//
+//    @Value("${user.password}")
+//    private String password;
+//
+//    private static final Logger LOGGER = LoggerFactory.getLogger(UserMethodArgumentResolver.class);
+//
+//    @Override
+//    public boolean supportsParameter(MethodParameter methodParameter) {
+//        return (methodParameter.getParameterType().isAssignableFrom(UserInfo.class) && methodParameter.hasParameterAnnotation(CurrentUser.class));
+//    }
+//
+//    @Override
+//    public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
+//        //处理登录用户
+//        Object userId = nativeWebRequest.getAttribute(UserConsts.PLATFORM_USERID, RequestAttributes.SCOPE_REQUEST);
+//        if (userId != null) {
+//            if (!username.equals(userId)) {
+//                LOGGER.error("platformUserId={}", userId);
+//                throw new RestException(404, "登录用户不存在");
+//            }
+//            UserInfo userInfo = new UserInfo();
+//            userInfo.setUserName( String.valueOf(userId));
+//            userInfo.setPassword( String.valueOf(password));
+//            return userInfo;
+//        }
+//        throw new MissingServletRequestPartException("用户ID属性不存在 检查是否在类或方法上使用ExcludeAccessToken");
+//    }
+//
+//}

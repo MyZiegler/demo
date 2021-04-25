@@ -1,9 +1,14 @@
 package com.wpw.demo.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSON;
+import com.wpw.demo.pojo.LinePriceBase;
+import com.wpw.demo.pojo.LinePriceParam;
+import com.wpw.demo.service.DataRPCService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 /**
  * quarzcontroller
@@ -16,9 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
 
-    @GetMapping("/query")
-    public String startQuartzJob() {
-       return "query";
+    @RequestMapping("/query")
+    public String startQuartzJob(@RequestBody LinePriceParam kaOrderV) {
+        LinePriceParam kaOrderVO = new LinePriceParam();
+        kaOrderVO.setEndDistance(new BigDecimal(2222));
+        return JSON.toJSONString(kaOrderVO);
     }
+
+
+
 
 }
